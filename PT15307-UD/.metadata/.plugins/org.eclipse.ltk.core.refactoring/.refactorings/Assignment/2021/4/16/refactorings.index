@@ -1,0 +1,30 @@
+1618279163195	Delete element
+1618279310672	Rename package 'com.dao'
+1618279337115	Rename package 'com.entity'
+1618279446128	Rename type 'User'
+1618279727494	Delete element
+1618280577730	Delete element
+1618288355749	Copy file
+1618296519955	Delete element
+1618296562666	Delete element
+1618297026728	Rename type 'UserModal'
+1618306037098	Rename package 'com.servlet.admin'
+1618322328164	Rename resource 'layout.jsp'
+1618324518303	Delete element
+1618326418452	Rename resource 'login.jsp'
+1618364000313	Rename package 'modal'
+1618365216121	Rename method 'store'
+1618455182294	Copy compilation units
+1618455189992	Delete element
+1618456764688	Copy files
+1618456773224	Delete elements
+1618456784585	Move 'GiaoDienAdmin.jsp' to 'admin'
+1618456835387	Move 'style.css' to 'user'
+1618534479234	Rename resource 'QL_Admin.jsp'
+1618537468395	Copy file
+1618537721029	Copy file
+1618671823516	Rename type 'VideoServlet'
+1618673869123	Rename resource 'GiaoDienAdmin.jsp'
+1618681846102	Copy files
+1618681852491	Delete elements
+1618681861473	Delete element

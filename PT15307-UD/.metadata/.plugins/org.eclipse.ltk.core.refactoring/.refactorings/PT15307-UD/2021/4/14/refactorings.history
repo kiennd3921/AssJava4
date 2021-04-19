@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;UsersServlet.java&apos; to &apos;PT15307-UD/src/com.servlet.admin&apos;&#x0D;&#x0A;- Original project: &apos;PT15307-UD&apos;&#x0D;&#x0A;- Destination element: &apos;PT15307-UD/src/com.servlet.admin&apos;&#x0D;&#x0A;- Original element: &apos;com.servlet.UsersServlet.java&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move compilation unit" destination="/src=/optional=/true=/=/maven.pomderived=/true=/&lt;com.servlet.admin" element1="/src=/optional=/true=/=/maven.pomderived=/true=/&lt;com.servlet{UsersServlet.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" patterns="*" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1617327646827" units="1" version="1.0"/>
+</session>

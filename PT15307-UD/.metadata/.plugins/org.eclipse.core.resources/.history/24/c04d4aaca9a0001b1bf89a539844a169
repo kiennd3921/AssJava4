@@ -1,0 +1,61 @@
+package servlet;
+
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.beanutils.BeanUtils;
+
+import dao.UserDAO;
+import entity.User;
+
+@WebServlet("/edit")
+public class EditUserServlet extends HttpServlet {
+	private UserDAO userDAO;
+    public EditUserServlet() {
+        super();
+        
+        this.userDAO = new UserDAO();
+    }
+
+	protected void doGet(
+		HttpServletRequest request,
+		HttpServletResponse response
+	) throws ServletException, IOException {
+		User entity = this.userDAO.findById(request.getParameter("id"));
+		
+		request.setAttribute("user", entity);
+		List<User> listUser = this.userDAO.getAll();
+
+		request.setAttribute("listUser", listUser);
+
+		request.getRequestDispatcher("/view/auth/index.jsp")
+			.forward(request, response);
+	}
+
+	protected void doPost(
+		HttpServletRequest request,
+		HttpServletResponse response
+	) throws ServletException, IOException {
+		System.out.println("EditUserServlet - doPost");
+		
+		User entity = new User();
+		
+		try {
+			BeanUtils.populate(entity, request.getParameterMap());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		this.userDAO.update(entity);
+		
+		response.sendRedirect("/PT15307-UD/user");
+	}
+
+}

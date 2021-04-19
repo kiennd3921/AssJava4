@@ -1,0 +1,94 @@
+package dao;
+
+import java.util.List;
+
+import javax.persistence.Query;
+
+import org.hibernate.Session;
+
+import com.utils.HibernateUtils;
+
+import modal.UserModal;
+
+public class UserDAO {
+	private Session hSession;
+
+	public UserDAO() {
+		this.hSession = HibernateUtils.getSession();
+	}
+
+	public UserModal store(UserModal entity) {
+		this.hSession.beginTransaction();
+		Integer id = (Integer) this.hSession.save(entity);
+		this.hSession.getTransaction().commit();
+
+		entity.setId(id);
+		return entity;
+	}
+
+	public List<UserModal> paginate(int offset, int limit) {
+		String hql = "FROM User";
+		Query query = this.hSession.createQuery(hql);
+		query.setFirstResult(offset);
+		query.setMaxResults(offset + limit);
+
+		List<UserModal> listUser = query.getResultList();
+
+		return listUser;
+	}
+
+	public UserModal findById(int id) {
+		UserModal entity = this.hSession.get(UserModal.class, id);
+
+		return entity;
+	}
+
+	public void update(UserModal entity) {
+		try {
+			this.hSession.clear();
+			this.hSession.beginTransaction();
+
+			this.hSession.update(entity);
+
+			this.hSession.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			this.hSession.getTransaction().rollback();
+		}
+	}
+
+	public void delete(UserModal entity) {
+		try {
+			this.hSession.clear();
+
+			this.hSession.beginTransaction();
+
+			this.hSession.delete(entity);
+
+			this.hSession.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			this.hSession.getTransaction().rollback();
+		}
+	}
+
+	public UserModal login(String email, String password) {
+		String hql = "SELECT objUser FROM User objUser " + "WHERE email = :email AND password = :password";
+
+		Query query = this.hSession.createQuery(hql);
+		query.setParameter("email", email);
+		query.setParameter("password", password);
+
+		try {
+			UserModal entity = (UserModal) query.getSingleResult();
+
+			return entity;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+}

@@ -1,0 +1,59 @@
+package servlet;
+
+import java.io.IOException;
+import java.util.List;
+
+import javax.persistence.TypedQuery;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.utils.HibernateUtils;
+
+import dao.UserDAO;
+import entity.User;
+
+@WebServlet({ "/user", "/users/delete", "/users/update", "/users/insert" })
+public class QLUsersServlet extends HttpServlet {
+
+	private static final long serialVersionUID = 4457761827027115594L;
+
+	private UserDAO userDAO;
+
+	public QLUsersServlet() {
+		super();
+
+		this.userDAO = new UserDAO();
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+	}
+	
+	public void getAll(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setAttribute("users", userDAO.getAll());
+		req.getRequestDispatcher("/view/auth/index.jsp").forward(req, resp);
+	}
+	
+	private void insert(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+	}
+	
+	private void update(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+	}
+	
+	private void delete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+	}
+
+}

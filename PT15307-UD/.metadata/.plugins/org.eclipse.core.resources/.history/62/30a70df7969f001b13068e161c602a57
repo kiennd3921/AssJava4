@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	z-index: 1;
+	background-color: orange;
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+
+.card-product {
+	width: 100%;
+
+	margin-right: 5px;
+	overflow: hidden;
+}
+.img{
+	margin-left: 15px;
+	margin-top: 15px;
+	margin-right: 15px;
+	margin-bottom: 0px;
+}
+.page-item{
+	text-align: center;
+}
+aside{
+	float: left;
+}
+article{
+	float: right;
+}
+.khoi{
+	background-color: grey;
+}

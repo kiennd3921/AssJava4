@@ -1,0 +1,93 @@
+package servlet;
+
+import java.io.IOException;
+import java.util.List;
+
+import javax.persistence.TypedQuery;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.utils.HibernateUtils;
+
+import dao.UserDAO;
+import entity.User;
+
+@WebServlet({ "/user", "/users/delete", "/users/update", "/users/insert" })
+public class QLUsersServlet extends HttpServlet {
+
+	private static final long serialVersionUID = 4457761827027115594L;
+
+	private UserDAO userDAO;
+
+	public QLUsersServlet() {
+		super();
+
+		this.userDAO = new UserDAO();
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String servletPath = request.getServletPath();
+		
+		switch (servletPath) {
+		case "/users/delete":
+			this.delete(request, response);
+			break;
+		case "/user":
+			String id = request.getParameter("id");
+			if (id != null) {
+				User user = userDAO.findById(id);
+				request.setAttribute("user", user);
+			} else {
+				request.setAttribute("user", new User());
+			}
+			this.getAll(request, response);
+			break;
+		default:
+			break;
+		}
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String servletPath = request.getServletPath();
+		
+		switch (servletPath) {
+		case "/users/update":
+			this.update(request, response);
+			break;
+		case "/users/insert":
+			this.insert(request, response);
+			break;
+		default:
+			break;
+		}
+	}
+	
+	public void getAll(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setAttribute("users", userDAO.getAll());
+		req.getRequestDispatcher("/view/auth/index.jsp").forward(req, resp);
+	}
+	
+	private void insert(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("insert");
+	}
+	
+	private void update(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("update");
+	}
+	
+	private void delete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String id = req.getParameter("id");
+		if (userDAO.delete(id)) {
+			
+			getAll(req, resp);
+		}
+		System.out.println("delete");
+	}
+
+}

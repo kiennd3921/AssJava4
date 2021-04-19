@@ -1,0 +1,58 @@
+package servlet;
+
+import java.io.IOException;
+import java.util.List;
+
+import javax.persistence.TypedQuery;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.utils.HibernateUtils;
+
+import dao.UserDAO;
+import entity.User;
+
+@WebServlet({ "/users", "/users/delete", })
+public class UsersServlet extends HttpServlet {
+	private UserDAO userDAO;
+
+	public UsersServlet() {
+		super();
+
+		this.userDAO = new UserDAO();
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		List<User> listUser = this.userDAO.getAll();
+
+		request.setAttribute("listUser", listUser);
+		
+		request.getRequestDispatcher("/view/admin/users/index.jsp").forward(request, response);
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String idStr = request.getParameter("id");
+
+		if (idStr == null) {
+			// Bad request
+		}
+
+		String id = idStr;
+
+		User entity = new User();
+
+		entity.setId(id);
+
+		this.userDAO.delete(entity);
+
+		response.sendRedirect("/PT15307-UD/users");
+	}
+
+}

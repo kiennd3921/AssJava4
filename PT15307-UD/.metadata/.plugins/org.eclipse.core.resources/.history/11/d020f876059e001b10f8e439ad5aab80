@@ -1,0 +1,75 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="utf-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="#">
+<link rel="stylesheet" type="text/css"
+	href="bootstrap/css/bootstrap.min.css">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+	crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+		<nav class="nav nav-tabs">
+			<a class="nav-link" id="home-tab" data-toggle="tab" href="#home">Trang-chủ</a>
+			<a class="nav-link" id="product-tab" data-toggle="tab"
+				href="#product">Sản phẩm</a>
+		</nav>
+		<div class="tab-content">
+			<div class="tab-pane fade show active" id="home">
+				<aside>
+					<div class="container">
+						<div class="product-group">
+							<div class="row">
+								<div class="col-md-4 col-sm-4">
+									<div class="card card-product mb-3">
+										<img src="https://via.placeholder.com/320x180"
+											class="card-img-top" alt="Card image cap">
+										<div class="card-body">
+											<h3 class="card-title">Title</h3>
+											<h5 class="text">Descriptionrherherherhherherhherheryryeryeherhherheryryeryeheryryeryery</h5>
+											<ul class="justify-content-end">
+												<a href="#" class="btn btn-primary">Like</a>
+												<a href="#" class="btn btn-primary">Share</a>
+											</ul>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</aside>
+			</div>
+			<div class="tab-pane fade" id="product">
+				<aside>
+					<div class="container">
+						<div class="product-group">
+							<div class="row">
+								<div class="col-md-4 col-sm-4">
+									<div class="card card-product mb-3">
+										<img src="https://via.placeholder.com/320x180"
+											class="card-img-top" alt="Card image cap">
+										<div class="card-body">
+											<h4 class="card-title">Title</h4>
+											<h5 class="card-item">Description</h5>
+											<a href="#" class="btn btn-primary">Like</a> <a href="#"
+												class="btn btn-primary">Share</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</aside>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

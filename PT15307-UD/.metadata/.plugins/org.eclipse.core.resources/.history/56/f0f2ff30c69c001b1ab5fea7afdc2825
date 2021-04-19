@@ -1,0 +1,25 @@
+package dao;
+
+import org.hibernate.Session;
+
+import com.utils.HibernateUtils;
+
+import java.util.List;
+
+import javax.persistence.Query;
+
+import entity.Video;
+
+public class VideoDAO {
+	private Session hSession;
+
+	public VideoDAO() {
+		this.hSession = HibernateUtils.getSession();
+	}
+
+	public Video insert(Video entity) {
+		
+		return entity;
+	}
+
+}
